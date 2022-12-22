@@ -16,6 +16,9 @@ pip install -r requirements.txt
 ```
 ## Construction of Training Data for RACAR
 In order to train **RACAR**, it must be known in advance which candidate pair in database is most relevant to every (user query, golden response) pair. After labeling is complete, the labeled data sets are automatically moved to `RACAR/data/` directory.
+> **Warning** <br>
+> Since this repository provides only part of the AI-Hub data, individuals have to download the data set for complete training
+
 ```
 bash run_labeling.sh
 ```
@@ -23,7 +26,7 @@ bash run_labeling.sh
 ## Training RACAR
 After training RACAR, construct data for training REGE. The labeled data sets for training REGE are automatically moved to `REGE/data/` directory. 
 > **Note** <br>
-> `--embedding_mask` is number of your valid data
+> `--embedding_mask` is number of your training data
 ```
 bash run_racar.sh
 ```
@@ -32,3 +35,24 @@ bash run_racar.sh
 ```
 bash run_rege.sh
 ```
+
+## API Inference
+```
+python main.py \
+  --lang ko \
+  --model hybrid \
+  --corpus_v1 data/database_v1.tsv \
+  --corpus_v2 data/database_v2.tsv \
+  --retrieval_ckpt models/outputs/single_retrieval_model.pt \
+  --generative_ckpt models/outputs/single_generative_model.pt \
+  --retrieval_mode base \
+  --num_centroids 64 \
+  --n_beams 5 \
+  --min_length 3 \
+  --db_embedding_bsz 256 \
+  --num_ks 3 \
+  --max_len 80 
+```
+
+## Demo with FastAPI
+<img src = "https://user-images.githubusercontent.com/55969260/200460525-ac04b760-0b66-4371-84f5-d82f15d1b1e6.gif"> <br>
