@@ -39,6 +39,7 @@ bash run_rege.sh
 ```
 
 ## Inference
+Note that the comparisons of (query, prospective response) with all candidate pairs ∈ Database(DB) could take a very long time since DB is usually extremely large. Therefore, FAISS [(Jonhonson et al., 2017)](https://arxiv.org/abs/1702.08734) is adopted for the speedup of this comparison process.
 ```
 cd inference
 bash run_eval.sh
