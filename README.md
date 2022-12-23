@@ -24,6 +24,7 @@ bash run_labeling.sh
 ```
 
 ## Training RACAR
+RACAR retrieves the most similar candidate from Database (DB) using both a user query and its golden response. The fact that it utilizes both query and golden response is a distinguishable merit of RACAR from the existing candidate retrieval models. Actually, RACAR is a simple classifier which consists of a transformer encoder layer and a similarity softmax layer. This paper adopts BERT [(Devlin et al., 2019)](https://arxiv.org/abs/1810.04805) as the transformer encoder.
 After training RACAR, construct data for training REGE. The labeled data sets for training REGE are automatically moved to `REGE/data/` directory. 
 > **Note** <br>
 > `--embedding_mask` is number of your training data
@@ -40,7 +41,7 @@ bash run_rege.sh
 ```
 
 ## Inference
-Note that the comparisons of (query, prospective response) with all (candidate question, candidate answer) ∈ Database(DB) could take a very long time since DB is usually extremely large. Therefore, FAISS [(Jonhonson et al., 2017)](https://arxiv.org/abs/1702.08734) is adopted for the speedup of this comparison process.
+Note that the comparisons of (query, prospective response) with all (candidate question, candidate answer) ∈ DB could take a very long time since DB is usually extremely large. Therefore, FAISS [(Jonhonson et al., 2017)](https://arxiv.org/abs/1702.08734) is adopted for the speedup of this comparison process.
 ```
 cd inference
 bash run_eval.sh
