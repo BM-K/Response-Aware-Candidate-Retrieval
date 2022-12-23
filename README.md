@@ -28,30 +28,20 @@ After training RACAR, construct data for training REGE. The labeled data sets fo
 > **Note** <br>
 > `--embedding_mask` is number of your training data
 ```
+cd RACAR
 bash run_racar.sh
 ```
 
 ## Training REGE
 ```
+cd REGE
 bash run_rege.sh
 ```
 
-## API Inference
+## Inference
 ```
-python main.py \
-  --lang ko \
-  --model hybrid \
-  --corpus_v1 data/database_v1.tsv \
-  --corpus_v2 data/database_v2.tsv \
-  --retrieval_ckpt models/outputs/single_retrieval_model.pt \
-  --generative_ckpt models/outputs/single_generative_model.pt \
-  --retrieval_mode base \
-  --num_centroids 64 \
-  --n_beams 5 \
-  --min_length 3 \
-  --db_embedding_bsz 256 \
-  --num_ks 3 \
-  --max_len 80 
+cd inference
+bash run_eval.sh
 ```
 
 ## Demo with FastAPI
