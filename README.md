@@ -33,13 +33,14 @@ bash run_racar.sh
 ```
 
 ## Training REGE
+Following the decoder fusion in the work of [Izacard and Grave (2021)](https://arxiv.org/abs/2007.01282), the *K* candidate answers are respectively concatenated to query. This paper adopts BART [(Lewis et al., 2020)](https://arxiv.org/abs/1910.13461) as the encoder-decoder model. Therefore, training REGE is equivalent to fine-tuning the BART.
 ```
 cd REGE
 bash run_rege.sh
 ```
 
 ## Inference
-Note that the comparisons of (query, prospective response) with all candidate pairs ∈ Database(DB) could take a very long time since DB is usually extremely large. Therefore, FAISS [(Jonhonson et al., 2017)](https://arxiv.org/abs/1702.08734) is adopted for the speedup of this comparison process.
+Note that the comparisons of (query, prospective response) with all (candidate question, candidate answer) ∈ Database(DB) could take a very long time since DB is usually extremely large. Therefore, FAISS [(Jonhonson et al., 2017)](https://arxiv.org/abs/1702.08734) is adopted for the speedup of this comparison process.
 ```
 cd inference
 bash run_eval.sh
