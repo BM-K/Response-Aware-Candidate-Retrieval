@@ -22,7 +22,6 @@ class Database():
         corpus = []
         corpus_sep = []
         corpus_data_path = {'train': self.args.corpus_train, 'valid': self.args.corpus_valid}
-        #corpus_data_path = {'valid': self.args.corpus_valid}
     
         for key, val in corpus_data_path.items():
             with open(corpus_data_path[key], "r", encoding="utf-8") as file:
