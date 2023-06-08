@@ -11,11 +11,7 @@ class Loss():
     def base(self, config, logits, labels):
 
         return config['criterion'](logits, labels)
-
-    """
-    TODO: Attention map distribution loss & Hidden state distribution loss
-    """
-
+    
     def kd_loss(self, config, post, prior):
         loss_KD = F.kl_div(F.log_softmax(prior / config['args'].temperature, dim=1),
                            F.softmax(post / config['args'].temperature, dim=1), reduction="batchmean")
