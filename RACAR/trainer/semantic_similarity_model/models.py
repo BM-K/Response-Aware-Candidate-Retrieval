@@ -721,7 +721,6 @@ class InferenceTimeDBdata(nn.Module):
             batch_size = query_embeddings.size(0)
 
             # Mask training embeddings
-            
             if self.args.test_data.find('test') == -1:
                 embedding_mask = torch.randn(batch_size, query_embeddings.size(-1), device=self.args.device)
 
@@ -743,12 +742,6 @@ class InferenceTimeDBdata(nn.Module):
                 target = torch.ge(target.scatter_(1, cur_test_labels.to(self.args.device), 1), 0.1)
                 
                 self.embedded_db = copy.deepcopy(self.clone_embedded_db)
-                
-                # sparse vector 성능 체크
-                #cur_sparse_label = self.ret_id[self.test_time_start:self.test_time_end, :]
-                #preds = 0
-                #target = 0
-
                 self.test_time_start += batch_size
             else:
                 cur_test_labels = preds = target = None
