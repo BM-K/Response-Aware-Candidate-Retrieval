@@ -142,7 +142,7 @@ class Metric():
         for idx in range(len(checker)):
 
             gold_response = response_set[idx]
-            # hypo = db_response_set[checker[idx]]  # memory_db[search_idx][yhat].split('[SEP]')[1].strip()
+
             hypo = []
             for i in range(len(checker[idx])):
                 hypo.append(db_response_set[checker[idx][i]])
