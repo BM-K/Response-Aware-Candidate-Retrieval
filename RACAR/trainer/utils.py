@@ -51,16 +51,6 @@ class Metric():
 
     def cal_mrr(self, y, yhat, k=10):
         yhat = yhat.topk(k=k, dim=-1)[1].cpu()
-        """
-        for k_idx in range(self.args.recall_k):
-
-            cur_y_targets = y[:, k_idx].unsqueeze(1)
-            cur_hits = (yhat == cur_y_targets)
-
-            if k_idx == 0: self.hits = cur_hits
-            else: self.hits += cur_hits
-        """
-        # rank = self.remove_duple((self.hits == True).nonzero())
         targets = y.unsqueeze(1)
         hits = (targets == yhat).nonzero()[:, -1] + 1
         ranks = torch.reciprocal(hits.float())
@@ -116,7 +106,6 @@ class Metric():
                     hit_args = self.cal_hit(y.cpu(), yhat.cpu(), k=self.args.hit_k)
                     mrr_k = self.cal_mrr(y.cpu(), yhat.cpu(), k=self.args.hit_k)
                     hit_10 = self.cal_hit(y.cpu(), yhat.cpu(), k=10)
-                    # rec_k = self.cal_rec(preds.cpu(), target.cpu())
 
                 yhat = yhat.topk(k=self.args.retrieve_n_response, dim=-1)[1].cpu()
                 hypo.append(yhat[:, :self.args.retrieve_n_response].numpy().tolist())  # edit for FiD
