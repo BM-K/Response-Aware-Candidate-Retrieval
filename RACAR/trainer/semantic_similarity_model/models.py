@@ -754,7 +754,7 @@ class InferenceTimeDBdata(nn.Module):
                 cur_test_labels = preds = target = None
 
             top_results = logits.squeeze(1)
-        #return (cur_sparse_label, cur_test_labels, preds, target)
+
         return (top_results, cur_test_labels, preds, target)
 
     def sparse_vector_retrieval_performance(self):
@@ -784,9 +784,6 @@ class InferenceTimeDBdata(nn.Module):
     def embedding_db_data(self):
         corpus = []
         
-        #self.sparse_vector_retrieval_performance()
-
-        # train_db_path == test_db
         corpus_data_path_train = self.args.path_to_data + '/' + self.args.train_data
         corpus_data_path_valid = self.args.path_to_data + '/' + self.args.valid_data
         corpus_data_path = {'train': corpus_data_path_train, 'valid': corpus_data_path_valid}
@@ -821,7 +818,7 @@ class InferenceTimeDBdata(nn.Module):
                 corpus_embeddings = corpus_embeddings[:, :1].squeeze(1)
 
             tensor_stack = torch.cat([tensor_stack, corpus_embeddings.cpu()], dim=0)
-            #break
+
         self.embedded_db = tensor_stack[1:]
 
         self.clone_embedded_db = copy.deepcopy(self.embedded_db)
