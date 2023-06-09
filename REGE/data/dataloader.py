@@ -27,19 +27,6 @@ class ModelDataLoader(Dataset):
         self.bl_decoder_attention_mask = []
         self.bl_labels = []
 
-        """
-        init token, idx = <s>, 0
-        pad token, idx = <pad>, 1
-        unk token, idx = <unk>, 3
-        eos token, idx = </s>, 2 == sep (bart)
-        
-        1
-        3
-        5
-        1
-        None
-        <s>
-        """
         special_tokens = {'sep_token': "<sep>"}
         self.tokenizer.add_special_tokens(special_tokens)
 
