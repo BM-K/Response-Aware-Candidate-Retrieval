@@ -86,11 +86,7 @@ class ModelDataLoader(Dataset):
                             knowledge = ' '
                         else:
                             knowledge = f" {self.sep_token} {adam_knowledge}"#adam_knowledge#f" {self.sep_token} {adam_knowledge}"
-                        #    if adam_knowledge != 'None':
-                        #    split_db_response += [' ' + adam_knowledge.strip().replace(' ', '')]
-                        #else:
-                        #    split_db_response += [' ']
-                    
+
                     input_list = []
                     attention_mask_list = []
                     inputs = self.tokenizer.encode(source) + [self.sep_token_idx]
