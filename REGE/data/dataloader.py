@@ -85,7 +85,7 @@ class ModelDataLoader(Dataset):
                         if adam_knowledge == 'None':
                             knowledge = ' '
                         else:
-                            knowledge = f" {self.sep_token} {adam_knowledge}"#adam_knowledge#f" {self.sep_token} {adam_knowledge}"
+                            knowledge = f" {self.sep_token} {adam_knowledge}"
 
                     input_list = []
                     attention_mask_list = []
