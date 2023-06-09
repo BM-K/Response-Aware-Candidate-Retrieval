@@ -90,10 +90,7 @@ class ModelDataLoader(Dataset):
                     input_list = []
                     attention_mask_list = []
                     inputs = self.tokenizer.encode(source) + [self.sep_token_idx]
-                    
-                    #if self.args.use_kb == 'True' and knowledge != ' ':
-                    #    split_db_response = [knowledge] + split_db_response[:-1]
-                        
+                                          
                     for step in range(len(split_db_response)):
                         
                         if self.args.use_kb == 'True':
