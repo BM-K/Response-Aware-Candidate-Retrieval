@@ -75,7 +75,7 @@ class ModelDataLoader(Dataset):
 
         if self.args.model == 'BART':
             if self.args.use_db_response == 'True':
-                #assert len(db_response.split('|')) == 100
+
                 """
                 *** Fusion in Decoder Strategy ***
                 """
