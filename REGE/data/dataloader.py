@@ -57,8 +57,6 @@ class ModelDataLoader(Dataset):
             for _, line in tqdm(enumerate(lines)):
                 check = self.data2tensor(line, type)
                 st+=1
-                #if st == 1000:
-                #    break
 
     def data2tensor(self, line, type):
         try:
