@@ -100,9 +100,7 @@ class ModelDataLoader(Dataset):
                                 db_res = self.tokenizer.encode(split_db_response[step].strip()+knowledge)
                         else:
                             db_res = self.tokenizer.encode(split_db_response[step].strip())
-                        
-                        #db_res = self.tokenizer.encode(split_db_response[step].strip())
-
+                      
                         input = self.add_padding_data(inputs + db_res)
 
                         input_list.append(input)
