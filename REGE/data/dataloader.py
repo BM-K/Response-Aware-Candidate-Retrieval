@@ -159,11 +159,6 @@ class ModelDataLoader(Dataset):
                 decoder_attention_mask = torch.tensor(dec_input_ids.ne(self.pad_token_idx).float())
 
             else:
-                #if self.args.use_kb == 'True':
-                #    if adam_knowledge != 'None':
-                #        knowledge = f" {self.sep_token} {adam_knowledge.strip().replace(' ', '')}"
-                #        source = source + knowledge
-                        
                 inputs = self.tokenizer.encode(source)  # [:-1]
 
                 inputs = torch.LongTensor(self.add_padding_data(inputs))
