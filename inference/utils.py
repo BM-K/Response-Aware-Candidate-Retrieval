@@ -43,12 +43,7 @@ def output_results(args, test_ref_set, hyp_set, generative_tokenizer):
                     ref = ref.replace('Ġ', '') + "\n"
             else:
                 ref = ' '.join(jieba.lcut(ref.replace(' ', ''))).strip() + '\n'
-          
-            #if args.lang == 'ko':
-            #    ref = ref.replace('▁', '') + "\n"
-            #elif args.lang == 'en':
-            #    ref = ref.replace('Ġ', '') + "\n"
-
+                
             f.write(ref)
             
     with open(args.results_hyp, 'w', encoding='utf-8') as f:
