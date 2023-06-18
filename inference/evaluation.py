@@ -3,15 +3,6 @@ from lib import evaluation_utils
 from multiprocessing import Pool
 
 if __name__ == "__main__":
-    
-    """
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--reference_file", type=str, default="examples/reference.txt")
-    parser.add_argument("--hypothesis_file", type=str, default="examples/hypothesis.txt")
-    parser.add_argument("--train_corpus_file", type=str, default="examples/train.tsv")
-    parser.add_argument("--subword_token", type=str, default="Ġ")
-    args = parser.parse_args()
-    """
     path_to_save_test_ref = 'inference_results_ref.tsv'
     path_to_save_test_hyp = 'inference_results_hyp.tsv'
     path_to_ref_src_file = '../REGE/data/base_labeled_train.tsv'
